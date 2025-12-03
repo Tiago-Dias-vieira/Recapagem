@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(39, 39, 226, 0.871);
+    background-color: rgba(2, 2, 203, 0.964);
 }
 
 #titulo{
@@ -7,4 +7,17 @@ body{
     text-align: center;
     font-size:  5rem;
     text-shadow: 5px 5px 5px black;
+    margin-top: 10px;
+}
+#rodape{
+    margin: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: -10;
 }

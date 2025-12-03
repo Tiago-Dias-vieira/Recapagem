@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recapagem Pneus Prata Ltda | Excelência em Recauchutagem</title>
+    <meta name="description" content="Rede Autorizada Vipal. 26 anos de experiência em recapagem de pneus para caminhões, ônibus e máquinas. Economia de até 60% com qualidade INMETRO.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-black: #1a1a1a;
+            --primary-silver: #c0c0c0;
+            --accent-gold: #ffd700;
+            --accent-red: #dc2626;
+            --white: #ffffff;
+            --dark-gray: #2d2d2d;
+            --light-gray: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            background: var(--primary-black);
+            color: var(--white);
+        }
+
+        /* Header */
+        header { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: rgba(26,26,26,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000; 
+            transition: all 0.3s ease;
+        }
+        .nav-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 1rem 2rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { 
+            color: var(--white); 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: all 0.3s ease; 
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent-gold); transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger { width: 25px; height: 3px; background: var(--white); margin: 3px 0; transition: 0.3s; }
+
+        /* Hero Section */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="tire" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffd700"/><stop offset="70%" stop-color="%232a5298"/><stop offset="100%" stop-color="%23000"/></radialGradient></defs><rect width="1920" height="1080" fill="%231a1a1a"/><circle cx="400" cy="400" r="200" fill="url(%23tire)" opacity="0.8"/><circle cx="1520" cy="680" r="250" fill="url(%23tire)" opacity="0.6"/><circle cx="800" cy="700" r="150" fill="%23dc2626" opacity="0.4"/></svg>');
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 2rem;
+            position: relative;
+        }
+        .hero h1 { 
+            font-size: clamp(3rem, 8vw, 6rem); 
+            font-weight: 800; 
+            margin-bottom: 1.5rem; 
+            opacity: 0; 
+            transform: translateY(50px); 
+            animation: heroTitle 1.2s 0.3s forwards;
+        }
+        .hero-subtitle { 
+            font-size: clamp(1.2rem, 3vw, 1.8rem); 
+            max-width: 600px; 
+            margin-bottom: 3rem; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: heroSubtitle 1.2s 0.6s forwards;
+        }
+        .cta-button { 
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red)); 
+            color: var(--primary-black); 
+            padding: 1.2rem 3rem; 
+            border: none; 
+            border-radius: 50px; 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; 
+            transform: scale(0.9) translateY(20px); 
+            animation: heroCTA 1.2s 1s forwards;
+            box-shadow: 0 20px 40px rgba(255,215,0,0.3);
+        }
+        .cta-button:hover { 
+            transform: scale(1.05) translateY(-5px); 
+            box-shadow: 0 30px 60px rgba(255,215,0,0.4);
+        }
+
+        /* Sections */
+        section { padding: 8rem 2rem; max-width: 1400px; margin: 0 auto; }
+        h2 { 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            text-align: center; 
+            margin-bottom: 4rem; 
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        h2::after {
+            content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(135deg, var(--accent-gold), var(--accent-red));
+        }
+
+        /* Cards Grid */
+        .cards-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 4rem;
+        }
+        .card { 
+            background: rgba(255,255,255,0.05); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 24px; 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; 
+            transform: translateY(50px);
+        }
+        .card:hover { 
+            transform: translateY(-20px) scale(1.02); 
+            background: rgba(255,255,255,0.1); 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+        .card i { 
+            font-size: 4rem; 
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 1.5rem;
+        }
+        .card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--white); }
+
+        /* Process Steps */
+        .process-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 3rem; 
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+        .process-step { 
+            display: flex; 
+            align-items: center; 
+            gap: 3rem; 
+            opacity: 0; 
+            transform: translateX(-50px); 
+            transition: all 0.8s ease;
+        }
+        .process-step.animate { transform: translateX(0); opacity: 1; }
+        .process-step:nth-child(even) { flex-direction: row-reverse; }
+        .process-step:nth-child(even) .step-content { text-align: right; }
+        .step-number { 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red)); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 2rem; 
+            font-weight: 800; 
+            color: var(--primary-black);
+        }
+
+        /* Stats */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 4rem;
+        }
+        .stat-card { 
+            text-align: center; 
+            padding: 3rem 2rem;
+        }
+        .stat-number { 
+            font-size: 4rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        /* Testimonials */
+        .testimonial { 
+            background: rgba(255,255,255,0.05); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            margin-bottom: 2rem; 
+            border-right: 5px solid var(--accent-gold);
+        }
+        .stars { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 1rem; }
+
+        /* Contact Form */
+        .contact-form { 
+            max-width: 600px; 
+            margin: 4rem auto; 
+            background: rgba(255,255,255,0.05); 
+            backdrop-filter: blur(20px); 
+            padding: 3rem; 
+            border-radius: 24px; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; 
+            padding: 1rem 1.5rem; 
+            background: rgba(255,255,255,0.1); 
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 12px; 
+            color: var(--white); 
+            font-size: 1rem; 
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; 
+            border-color: var(--accent-gold); 
+            box-shadow: 0 0 0 3px rgba(255,215,0,0.1);
+        }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.6); }
+
+        /* WhatsApp Button */
+        .whatsapp-float { 
+            position: fixed; 
+            width: 60px; 
+            height: 60px; 
+            bottom: 40px; 
+            right: 40px; 
+            background: #25D366; 
+            color: #FFF; 
+            border-radius: 50px; 
+            text-align: center; 
+            font-size: 30px; 
+            box-shadow: 0 4px 20px rgba(37,211,102,0.5); 
+            z-index: 1000; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Footer */
+        footer { 
+            background: var(--dark-gray); 
+            padding: 3rem 2rem 2rem; 
+            text-align: center; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { color: var(--accent-gold); margin-bottom: 1rem; }
+
+        /* Animations */
+        @keyframes heroTitle { to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroSubtitle { to { opacity: 1; transform: translateY(0); } }
+        @keyframes heroCTA { to { opacity: 1; transform: scale(1) translateY(0); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .process-step { flex-direction: column !important; text-align: center !important; }
+            .whatsapp-float { bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-tire"></i>
+                Recapagem Pneus Prata
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--accent-gold);">Rede Vipal</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#processo">Processo</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <h1>26 Anos de Excelência em Recapagem</h1>
+        <p class="hero-subtitle">Rede Autorizada Vipal | Economia até 60% | Qualidade INMETRO | Segurança Garantida para sua Frota [web:9][web:44]</p>
+        <button class="cta-button" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-rocket"></i> Solicitar Orçamento Gratuito
+        </button>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre">
+        <h2>Sobre a Recapagem Pneus Prata</h2>
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9;">
+                Fundada em 1999 em São Domingos do Prata-MG, somos <strong>Rede Autorizada Vipal</strong> 
+                com 26 anos de experiência em reacauchutagem de pneus para caminhões, ônibus e máquinas agrícolas.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">26</span>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">INMETRO</span>
+                    <p>Certificação Garantida</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">VIPAL</span>
+                    <p>Rede Autorizada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" style="background: rgba(0,0,0,0.3);">
+        <h2>Nossos Serviços Premium</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <i class="fas fa-fire"></i>
+                <h3>Recapagem a Frio</h3>
+                <p>Tecnologia Vipal em autoclave 115°C. Bandas pré-moldadas para máxima aderência e quilometragem [web:3].</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-tools"></i>
+                <h3>Consertos Especiais</h3>
+                <p>Reparos estruturais profundos. Reconstrução de carcaças para 3+ recapes [web:2].</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Coleta e Entrega</h3>
+                <p>Serviço completo porta a porta. Gestão inteligente de frotas [web:3].</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Balanceamento</h3>
+                <p>Precisão total para rodagem suave e segurança máxima.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo -->
+    <section id="processo">
+        <h2>13 Etapas Técnicas Certificadas [web:2]</h2>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Inspeção Inicial</h3>
+                    <p>Avaliação estrutural com raio-X digital da carcaça [web:2].</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Raspagem CNC</h3>
+                    <p>Remoção precisa da borracha velha com máquinas automatizadas [web:2].</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Vulcanização 115°C</h3>
+                    <p>Cura em autoclave com controle INMETRO [web:3].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" style="background: rgba(0,0,0,0.3);">
+        <h2>Benefícios Comprovados</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Economia 60%</h3>
+                <p>Menor custo vs pneu zero. ROI imediato para frotas [web:45][web:47].</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-leaf"></i>
+                <h3>Sustentabilidade</h3>
+                <p>Reduz 80% resíduos em aterros sanitários [web:45].</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Segurança Total</h3>
+                <p>Testes rigorosos INMETRO. Zero acidentes por falha estrutural.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <h2>Solicite seu Orçamento</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <input type="text" placeholder="Nome da Empresa/Frota" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="WhatsApp (ex: 31 99999-9999)" required>
+            </div>
+            <div class="form-group">
+                <select required>
+                    <option value="">Tipo de Serviço</option>
+                    <option>Recapagem Caminhão</option>
+                    <option>Recapagem Ônibus</option>
+                    <option>Consertos Especiais</option>
+                    <option>Gestão de Frota</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Quantidade de pneus, medidas, localização..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
+                <i class="fab fa-whatsapp"></i> Receber Orçamento em 15min
+            </button>
+        </form>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5531995584869?text=Olá! Gostaria de um orçamento para recapagem de pneus" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Recapagem Pneus Prata Ltda</h3>
+                <p>Rede Autorizada Vipal desde 1999</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Paulo Dionísio, 88 - Boa Vista<br>São Domingos do Prata - MG [web:44]</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-phone"></i> (31) 3856-1000</p>
+                <p><i class="fas fa-whatsapp"></i> (31) 9 9558-4869 [web:9]</p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 7h-18h</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <p>
+                    <a href="https://instagram.com/recapagempneusprata" style="color: var(--white); margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/RecapagemPneusPrata" style="color: var(--white);"><i class="fab fa-facebook"></i></a>
+                </p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; margin-top: 2rem;">
+            <p>&copy; 2025 Recapagem Pneus Prata Ltda. Todos os direitos reservados. [web:1][web:9][web:44]</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background = window.scrollY > 100 
+                ? 'rgba(26,26,26,0.98)' : 'rgba(26,26,26,0.95)';
+        });
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards and process steps
+        document.querySelectorAll('.card, .process-step').forEach(el => {
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Process steps animation
+        const processObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('animate'), index * 200);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.process-step').forEach(el => processObserver.observe(el));
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('✅ Orçamento solicitado! WhatsApp em 15 minutos: (31) 9 9558-4869');
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
