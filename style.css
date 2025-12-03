@@ -1,0 +1,10 @@
+body{
+    background-color: rgba(39, 39, 226, 0.871);
+}
+
+#titulo{
+    color: white;
+    text-align: center;
+    font-size:  5rem;
+    text-shadow: 5px 5px 5px black;
+}
